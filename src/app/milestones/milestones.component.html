@@ -1,0 +1,137 @@
+ 
+<div class="container">
+    <h2>Projects</h2>
+    <p>View Projects of the Company</p>            
+    <table class="table table-bordered" *ngIf="product">
+      <thead>
+        <tr>
+            <th>Client Name</th>
+            <th>Project Name</th>
+            <th>Milestone name</th>
+            <th>Project Id</th>
+            <th>Client Name</th>
+            <th>Start Date</th>
+            <th>SOW value</th>
+            <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pro of product">
+            <td>{{pro.client_name}}</td>
+            <td>{{pro.project_name}}</td>
+            <td>{{pro.milestone_id}}</td>
+            <td>{{pro.project_id}}</td>
+            <td>{{pro.project_name}}</td>
+            <td>{{pro.milestone_date.split("T")[0]}}</td>
+            <td>{{pro.sow_value}}</td>
+            <td *ngIf="pro.generated">
+             <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content);getInvoice1(pro.project_id,pro.milestone_id,pro.milestone_date.split('T')[0])">View Invoice</button>
+             </td>
+             <td *ngIf="!pro.generated">
+             <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content);getInvoice1(pro.project_id,pro.milestone_id,pro.milestone_date.split('T')[0])">Create Invoice</button>
+            </td>
+            
+
+        </tr>
+      </tbody>
+    </table>
+     <!-- <div *ngFor="let p of product;let i=index">
+      <p>{i}}</p>
+      <button type="button" (click)="getMSD(p.project_id,p.milestone_id,p.milestone_date)">Get Milestone Date</button>
+    </div> -->
+    
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Invoice Template</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div id="contentToConvert">
+      <form>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8">
+             Company Logo
+            </div>
+            <div class="col-sm-4">
+          Business Name
+            </div>
+          </div>
+          <hr>
+            <div class="row">
+              <div class="col-md-8">
+                <h5>Bill to:</h5>
+                <p>{{clientcontactname}}</p>
+                <p>{{clientcontactEmail}}</p>
+                <p>{{clientcontactaddress}}</p>
+              </div>
+              <div class="col-md-4">
+                Invoice:{{invoice_id}}
+                <p>Date</p>
+              </div>
+            </div>
+  
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                Description
+              </div>
+              <div class="col-sm-3">
+                Total hours
+              </div>
+              <div class="col-sm-3">
+                Unit Price
+              </div>
+              <div class="col-sm-3">
+                Amount
+              </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              Design
+            </div>
+            <div class="col-sm-3">
+             <p>{{hours}}</p>
+            </div>
+            <div class="col-sm-3">
+               <p> {{bill_rate}}<p>
+            </div>
+            <div class="col-sm-3">
+             <p>{{sow_value}}</p>
+            </div>
+         
+          </div>
+        <hr>
+            <div class="row">
+                <div class="form-group">                 
+                 <textarea class="form-control" id="exampleFormControlTextarea3" placeholder="Enter comments" rows="2"></textarea>
+                  </div>
+            </div>
+            <hr>       
+        </div>
+        </form>
+    </div>
+  </div>
+    <div class="modal-footer">
+        <div class="row justify-content-end">
+          <div class="col-sm-2">
+              <button type="button" class="btn btn-outline-dark" value="Save" (click)="insertinvoicedetails();modal.close('Save click')">Save</button>
+          </div>
+          <div class="col-sm-4">
+              <button type="button" class="btn btn-outline-dark" (click)="mailsend()">Send Email</button>
+          </div>
+          <div class="col-sm-2">
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Print</button>
+          </div>
+          <div class="col-sm-4">
+              <button type="button" class="btn btn-outline-dark" (click)="downloadPDF()">Download</button>
+          </div>
+        </div>
+    </div>
+  </ng-template>

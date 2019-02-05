@@ -1,0 +1,31 @@
+
+<div class="container">
+    <h2>Projects</h2>
+    <p>View Projects of the Company</p>            
+    <table class="table table-bordered" *ngIf="projects">
+      <thead>
+        <tr>
+          <th>Project Id</th>
+          <th>Project Name</th>
+          <th>Start Date</th>
+          <th>Completion Date</th>
+          <th>Project Manager</th>
+          <th>Client Contact</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pro of projects">
+            <td>{{pro.project_id}}</td>
+            <td>{{pro.project_name}}</td>
+            <td>{{pro.start_date.split("T")[0]}}</td>
+            <td>{{pro.completion_date.split("T")[0]}}</td>
+            <td>{{pro.empfirstname}}</td>
+            <td>{{pro.ClientContactName}}</td>
+            <td><button type="button" class="btn btn-primary" (click)="Milestone(pro.project_id)">View Milestones</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>

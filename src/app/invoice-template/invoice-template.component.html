@@ -1,0 +1,152 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Invoice Template</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div id="contentToConvert">
+    <form>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+           Company Logo
+          </div>
+          <div class="col-sm-4">
+        Business Name
+          </div>
+        </div>
+        <hr>
+          <div class="row">
+            <div class="col-md-8">
+              <h5>Bill to:</h5>
+              <p>{{clientcontactname}}</p>
+              <p>{{clientcontactEmail}}</p>
+              <p>{{clientcontactaddress}}</p>
+            </div>
+            <div class="col-md-4">
+              Invoice:{{invoice_id}}
+              <p>Date</p>
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              Description
+            </div>
+            <div class="col-sm-3">
+              Total hours
+            </div>
+            <div class="col-sm-3">
+              Unit Price
+            </div>
+            <div class="col-sm-3">
+              Amount
+            </div>
+          </div>
+          <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            Design
+          </div>
+          <div class="col-sm-3">
+           <p>{{hours}}</p>
+          </div>
+          <div class="col-sm-3">
+             <p> {{bill_rate}}<p>
+          </div>
+          <div class="col-sm-3">
+           <p>{{sow_value}}</p>
+          </div>
+       
+        </div>
+      <hr>
+          <div class="row">
+              <div class="form-group">                 
+               <textarea class="form-control" id="exampleFormControlTextarea3" placeholder="Enter comments" rows="2"></textarea>
+                </div>
+          </div>
+          <hr>       
+      </div>
+      </form>
+  </div>
+</div>
+  <div class="modal-footer">
+      <div class="row justify-content-end">
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-outline-dark" value="Save" (click)="insertinvoicedetails()">Save</button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-outline-dark" (click)="mailsend()">Send Email</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Print</button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-outline-dark" (click)="downloadPDF()">Download</button>
+        </div>
+      </div>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Create Invoice</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>
+<!-- <div id="content" #content>  
+  
+      <div class="alert alert-info">  
+          <strong>Html To PDF Conversion - Angular 6</strong>  
+      </div>  
+      
+   
+  </div>  
+  <div >  
+     
+      <table>  
+          <tr>  
+            <th>Column1</th>  
+            <th>Column2</th>  
+            <th>Column3</th>  
+          </tr>  
+          <tr>  
+            <td>Row 1</td>  
+            <td>Row 1</td>  
+            <td>Row 1</td>  
+          </tr>  
+          <tr>  
+            <td>Row 2</td>  
+            <td>Row 2</td>  
+            <td>Row 2</td>  
+          </tr>  
+          <tr>  
+            <td>Row 3</td>  
+            <td>Row 3</td>  
+            <td>Row 3</td>  
+          </tr>  
+          <tr>  
+            <td>Row 4</td>  
+            <td>Row 4</td>  
+            <td>Row 4</td>  
+          </tr>  
+          <tr>  
+            <td>Row 5</td>  
+            <td>Row 5</td>  
+            <td>Row 5</td>  
+          </tr>  
+          <tr>  
+            <td>Row 6</td>  
+            <td>Row 6</td>  
+            <td>Row 6</td>  
+          </tr>  
+        </table>  
+          
+   
+  </div>   -->
+<!-- 
+  <button type="button" (click)="downloadPDF()">Download PDF</button> -->
+      
+    
